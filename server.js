@@ -4,9 +4,11 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
-const exphb = require("express-handlebars");
-require('dotenv').config(); // loading environment variable from dotenv file
+const exphbs = require("express-handlebars");
+const { Utils } = require("sequelize");
+const hbs = exphbs.create({ dateformat: require("./utils/dateformat") });
 
+require('dotenv').config(); // loading environment variable from dotenv file
 
 // Creating instance of the express app
 const app = express();
@@ -30,7 +32,7 @@ app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.engine("handlebars", exphb.engine);
+app.engine("handlebars", exphbs.engine);
 app.set("view engine", "handlebars");
 
 app.use(
@@ -47,3 +49,4 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
 })
+
