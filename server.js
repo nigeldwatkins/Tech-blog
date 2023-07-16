@@ -32,9 +32,11 @@ app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public2')));
-app.engine("handlebars", exphbs.engine);
+app.use(express.static("public2"));
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
+
+
 
 
 app.use(routes);
