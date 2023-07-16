@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3001;
 const sess = {
     secret: process.env.SESSION_SECRET, // secret key used to sign the session ID cookie
     cookie: {}, // config option for the session cookie
-    resvae: false, // flag indicating whether to re-save the session for each request
+    resave: false, // flag indicating whether to re-save the session for each request
     saveUninitialized: true, // flag indicating whether to save uninitialized sessions to the store
     store: new SequelizeStore({
         db: sequelize,
@@ -46,4 +46,4 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
-});
+})
