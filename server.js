@@ -36,14 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine("handlebars", exphbs.engine);
 app.set("view engine", "handlebars");
 
-app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        store: new SequelizeStore({ db: sequelize }),
-        resave: false,
-        saveUninitialized: false,
-    })
-);
 
 app.use(routes);
 
