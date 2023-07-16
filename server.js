@@ -7,6 +7,7 @@ const sequelize = require("./config/connection");
 const exphbs = require("express-handlebars");
 const { Utils } = require("sequelize");
 const hbs = exphbs.create({ dateformat: require("./utils/dateformat") });
+const path = require('path');
 
 require('dotenv').config(); // loading environment variable from dotenv file
 
@@ -31,7 +32,7 @@ app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 app.engine("handlebars", exphbs.engine);
 app.set("view engine", "handlebars");
 
