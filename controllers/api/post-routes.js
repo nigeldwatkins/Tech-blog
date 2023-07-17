@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
         });
         res.status(200).json(postData);
     } catch (err) {
-        res.status(500),json(err);
+        res.status(500), json(err);
     }
 });
 
@@ -37,8 +37,8 @@ router.get("/:id", async (req, res) => {
 router.post("/", withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({
-            ...req.body, 
-            user_id: req.session.user_id, 
+            ...req.body,
+            user_id: req.session.user_id,
         });
         res.status(200).json(newPost);
     } catch (err) {
@@ -47,27 +47,27 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 router.put("/:id", withAuth, async (req, res) => {
-try {
-    const updatePost = await Post.update(req.body, {
-        where: {id: req.params.id }, 
-    });
+    try {
+        const updatePost = await Post.update(req.body, {
+            where: { id: req.params.id },
+        });
 
-    if (!updatePost) {
-        res.status(404).json({ message: "No post found for that id" });
-        return;
+        if (!updatePost) {
+            res.status(404).json({ message: "No post found for that id" });
+            return;
+        }
+        res.status(200).json(updatePost);
+    } catch (err) {
+        res.status(500).json(err);
     }
-    res.status(200).json(updatePost);
-} catch (err) {
-    res.status(500).json(err);
- }
 });
 
 router.delete("/:id", withAuth, async (req, res) => {
     try {
         await Comment.destroy({
-            wheere: {post_id: req.params.id },
+            where: { post_id: req.params.id },
         });
-        const deletePost = await Post.destroy ({
+        const deletePost = await Post.destroy({
             where: { id: req.params.id },
         });
 

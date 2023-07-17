@@ -5,9 +5,8 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const exphbs = require("express-handlebars");
-const { Utils } = require("sequelize");
-const hbs = exphbs.create({ dateformat: require("./utils/dateformat") });
-const path = require('path');
+const hbs = exphbs.create({ time: require("./utils/time") });
+
 
 require('dotenv').config(); // loading environment variable from dotenv file
 
@@ -19,7 +18,7 @@ const PORT = process.env.PORT || 3001;
 
 // session configuration object
 const sess = {
-    secret: process.env.SESSION_SECRET, // secret key used to sign the session ID cookie
+    secret: 'bet you wont guess this', // secret key used to sign the session ID cookie
     cookie: {}, // config option for the session cookie
     resave: false, // flag indicating whether to re-save the session for each request
     saveUninitialized: true, // flag indicating whether to save uninitialized sessions to the store
@@ -37,11 +36,19 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 
+app.use(
+    session({
+      secret: process.env.SECRET,
+      store: new SequelizeStore({ db: sequelize }),
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
 
-
+  
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
-})
+});
 

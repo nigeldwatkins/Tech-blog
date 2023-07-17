@@ -1,6 +1,6 @@
 // Importing the required dependencies
 const router = require("express").Router();
-const { Comment } = require("../../models/comment");
+const { Comment } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
 // route for creating a new comment 
