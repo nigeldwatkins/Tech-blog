@@ -1,15 +1,17 @@
 const technologySignupFormHandler = async (event) => {
     event.preventDefault();
 
-    const username = document.querySelector('#username').ariaValueMax.trim();
-    const email = document.querySelector('#email').ariaValueMax.trim();
-    const password = document.querySelector('#password').ariaValueMax.trim();
+    const username = document.querySelector('#username').value.trim();
+    const email = document.querySelector('#email').value.trim();
+    const password = document.querySelector('#password').value.trim();
 
     if (username && email && password) {
-        const response = await fetch ('/api/users/signup', {
+        const response = await fetch ('/api/user/signup', {
             method: 'POST',
             body: JSON.stringify({ username, email, password }),
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+             },
         });
 
         if (response.ok) {
@@ -22,5 +24,5 @@ const technologySignupFormHandler = async (event) => {
 
 const technologySignupForm = document.querySelector('#signup-form');
 if (technologySignupForm) {
-    technologySignupForm.addEventListener('submit', technologySignupForm);
+    technologySignupForm.addEventListener('submit', technologySignupFormHandler);
 }

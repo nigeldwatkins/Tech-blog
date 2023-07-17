@@ -6,6 +6,7 @@ const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const exphbs = require("express-handlebars");
 const helpers = require("./utils/helper");
+const path = require('path');
 
 
 require('dotenv').config(); // loading environment variable from dotenv file
@@ -32,7 +33,7 @@ app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public2"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const hbs = exphbs.create({ helpers });
 app.engine("handlebars", hbs.engine);

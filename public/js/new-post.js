@@ -1,11 +1,11 @@
 const newTechnologyPostFormHandler = async (event) => {
     event.preventDefault();
 
-    const title = document.querySelector('#title-new-technology-post').ariaValueMax.trim();
-    const content = document.querySelector('content-new-technology-post').ariaValueMax.trim();
+    const title = document.querySelector('#title-new-technology-post').value.trim();
+    const content = document.querySelector('content-new-technology-post').value.trim();
 
     if (title && content) {
-        const response = await fetch('/api/psots', {
+        const response = await fetch('/api/post', {
             method: 'POST',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },

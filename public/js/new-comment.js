@@ -6,7 +6,7 @@ const newTechnologyCommentFormHandler = async (event) => {
     const content = document.querySelector('#content-new-technology-comment').value.trim();
   
     if (content) {
-      const response = await fetch(`/api/comments`, {
+      const response = await fetch(`/api/comment`, {
         method: 'POST',
         body: JSON.stringify({ comment_text: content, post_id }),
         headers: { 'Content-Type': 'application/json' },

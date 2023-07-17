@@ -7,9 +7,9 @@ const homeRoutes = require("./home-routes");
 
 // setting up routes
 router.use("/", homeRoutes);
-router.use("/users", userRoutes);
-router.use("/posts", postRoutes);
-router.use("/comments", commentRoutes);
+router.use("/user", userRoutes);
+router.use("/post", postRoutes);
+router.use("/comment", commentRoutes);
 
 
 // exporting the router
