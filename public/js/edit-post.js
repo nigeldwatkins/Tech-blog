@@ -28,7 +28,7 @@ const updateTechnologyPostFormHandler = async (event) => {
 const deleteTechnologyPostFormHandler = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(`/api/posts/${post_id}`, {
+    const response = await fetch(`/api/post/${post_id}`, {
         method: "DELETE",
     });
 
@@ -41,14 +41,12 @@ const deleteTechnologyPostFormHandler = async (event) => {
 
 
 const updateTechnologyPostButton = document.querySelector("#update-technology-post");
+const deleteTechnologyPostButton = document.querySelector("#delete-technology-post");
 
 if (updateTechnologyPostButton) {
     updateTechnologyPostButton.addEventListener("click", updateTechnologyPostFormHandler);
 }
 
-
-const deleteTechnologyPostButton = document.querySelector("#delete-technology-post");
-
- if (deleteTechnologyPostButton) {
+if (deleteTechnologyPostButton) {
     deleteTechnologyPostButton.addEventListener("click", deleteTechnologyPostFormHandler);
 }

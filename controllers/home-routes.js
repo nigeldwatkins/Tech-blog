@@ -98,7 +98,7 @@ router.get("/editpost/:id", async (req, res) => {
 
         const post = postData.get({ plain: true });
 
-        res.remnder("editpost", {
+        res.render("editpost", {
             ...post, 
             logged_in: req.session.logged_in,
         });
@@ -106,5 +106,6 @@ router.get("/editpost/:id", async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 module.exports = router;

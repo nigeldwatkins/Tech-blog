@@ -2,7 +2,7 @@ const newTechnologyPostFormHandler = async (event) => {
     event.preventDefault();
 
     const title = document.querySelector('#title-new-technology-post').value.trim();
-    const content = document.querySelector('content-new-technology-post').value.trim();
+    const content = document.querySelector('#content-new-technology-post').value.trim();
 
     if (title && content) {
         const response = await fetch('/api/post', {

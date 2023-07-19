@@ -1,6 +1,6 @@
 const technologyLogout = async () => {
     const response = await fetch('/api/user/logout', {
-        method: 'GET',
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     });
 
