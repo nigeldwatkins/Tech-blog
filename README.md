@@ -1,7 +1,9 @@
 # Nigel's tech-BLOG
 
 # Preview
-
+The link is a video demonstration for your localhost: 
+<br> Link: https://drive.google.com/file/d/1MmoZfHlno7oWYlim3exeRHmf8enTx6Qq/view 
+<br> To view the deployed application on Heroku vist this link: https://nigel-techblog-06e2f2451578.herokuapp.com/ 
 # Description
 The CMS-Style Blog is a web application where developers can publish their blog posts and interact with other developers by commenting on their posts. The application is built from scratch using Handlebars as the templating language, Sequelize as the ORM (Object-Relational Mapping) to interact with the database, and Express-Session npm package for authentication.
 # Technology
